@@ -10,7 +10,12 @@ __pycache__/
 memory.db
 *.db
 *.db-journal
-
+.env
+.env.*
+bot.db
+*.db
+*.db-journal
+*.log
 # Termux / local
 bot.log
 *.log
