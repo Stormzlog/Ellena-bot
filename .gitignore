@@ -2,7 +2,18 @@
 __pycache__/
 *.py[codz]
 *$py.class
+# Secrets
+.env
+.env.*
 
+# Local bot memory
+memory.db
+*.db
+*.db-journal
+
+# Termux / local
+bot.log
+*.log
 # C extensions
 *.so
 
