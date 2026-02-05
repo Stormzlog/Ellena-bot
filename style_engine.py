@@ -1,3 +1,4 @@
+# style_engine.py
 import random
 
 def apply_style(text: str, linebreak_level: float = 0.75) -> str:
@@ -7,9 +8,12 @@ def apply_style(text: str, linebreak_level: float = 0.75) -> str:
     if not text:
         return "Ok"
 
-    # Occasionally split into two lines if it's a bit long
-    if len(text) > 45 and "\n" not in text and random.random() < linebreak_level:
-        mid = len(text) // 2
-        return text[:mid].rstrip() + "\n\n" + text[mid:].lstrip()
+    # Normalize whitespace a bit
+    t = " ".join(text.split())
 
-    return text
+    # Occasionally split into two lines if it's a bit long
+    if len(t) > 45 and "\n" not in t and random.random() < float(linebreak_level):
+        mid = len(t) // 2
+        return t[:mid].rstrip() + "\n\n" + t[mid:].lstrip()
+
+    return t
