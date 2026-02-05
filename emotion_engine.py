@@ -1,3 +1,4 @@
+# emotion_engine.py
 import re
 import time
 from typing import Dict, Any
@@ -28,7 +29,7 @@ def infer_emotion(user_text: str, state: Dict[str, Any]) -> Dict[str, Any]:
     t = raw.lower()
     words = set(re.findall(r"[a-z']+", t))
 
-    # Intent + tension (simple heuristic; you can swap to LLM later)
+    # Intent + tension (simple heuristic; swap to LLM later if you want)
     intent = "info" if "?" in raw else "banter"
     tension = 0.15
 
@@ -91,7 +92,7 @@ def update_mood_vector(state: Dict[str, Any], signal: Dict[str, Any], safety: Di
     if state.get("mood_vector") is None:
         state["mood_vector"] = _default_mood()
 
-    # If locked, keep current mood (but still track loop score in safety engine)
+    # If locked, keep current mood (loop tracking still happens in safety_engine)
     if state.get("mood_locked", False):
         return state
 
